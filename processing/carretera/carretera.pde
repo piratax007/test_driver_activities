@@ -2,9 +2,10 @@ import processing.serial.*;
 Serial portUSB;
 
 street[] calle = new street[500];
-street[] calle1 = new street[500];
-street[] calle2 = new street[500];
-street[] calle3 = new street[500];
+street left_street = new street();
+//street[] calle1 = new street[500];
+//street[] calle2 = new street[500];
+//street[] calle3 = new street[500];
 int time;
 float A, absL, absR;
 
@@ -17,11 +18,12 @@ void setup(){
   size(400, 500);
   portUSB = new Serial(this, "/dev/ttyUSB0", 9600);
   for (int i = 0; i < calle.length; i+=5){
-    calle[i] = new street(i * 0.01, i, 5, 6, 75);
-    calle1[i] = new street(i * 0.01, i, 5, 6, 145);
-    calle2[i] = new street(i * 0.01, i, 4, -1, 325);
-    calle3[i] = new street(i * 0.01, i, 4, -1, 255);
+    calle[i] = new street(i, i, 10, 6, width / 2);
+    //calle1[i] = new street(i * 0.01, i, 5, 6, 145);
+    //calle2[i] = new street(i * 0.01, i, 4, -1, 325);
+    //calle3[i] = new street(i * 0.01, i, 4, -1, 255);
   }
+  left_street.set_boundary();
   time = second();
   A = 25;
   absL = 0;
@@ -41,9 +43,9 @@ void draw(){
   }
   for (int i = 0; i < calle.length; i+=5){
     calle[i].dibuja(A + 10);
-    calle1[i].dibuja(A + 10);
-    calle2[i].dibuja(A + 10);
-    calle3[i].dibuja(A + 10);
+    //calle1[i].dibuja(A + 10);
+    //calle2[i].dibuja(A + 10);
+    //calle3[i].dibuja(A + 10);
   }
   
   fill(196, 40, 40);
