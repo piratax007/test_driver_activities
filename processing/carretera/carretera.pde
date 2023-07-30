@@ -2,6 +2,7 @@ import processing.serial.*;
 Serial portUSB;
 
 street left_street = new street();
+street right_street = new street();
 int time;
 float A, absL, absR;
 
@@ -14,7 +15,8 @@ void setup() {
   size(400, 500);
   portUSB = new Serial(this, "/dev/ttyUSB0", 9600);
 	
-  left_street.set_boundaries();
+  left_street.set_boundaries(width/8);
+	right_street.set_boundaries(3*width/4);
 	
   time = second();
   A = 25;
@@ -36,6 +38,7 @@ void draw() {
   }
 
 	left_street.draw_boundaries(A);
+	right_street.draw_boundaries(A);
   
   fill(196, 40, 40);
   ellipse(absL, height / 2, 5, 5);
