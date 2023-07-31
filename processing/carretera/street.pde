@@ -4,16 +4,16 @@ class street {
 	bound_point[] right_boundary;
 
   street() {
-    street_height = 500;
+    street_height = height;
 		street_width = 50;
     left_boundary = new bound_point[street_height];
 		right_boundary = new bound_point[street_height];
   }
 
-  void set_boundaries(float vertical_offset) {
+  void set_boundaries(float offset) {
     for (int i = 0; i < street_height; i+=5) {
-      left_boundary[i] = new bound_point(i, i, 10, 6, vertical_offset);
-      right_boundary[i] = new bound_point(i, i, 10, 6, vertical_offset);
+      left_boundary[i] = new bound_point(i, i, 10, 6, offset);
+      right_boundary[i] = new bound_point(i, i, 10, 6, offset);
     }
   }
 

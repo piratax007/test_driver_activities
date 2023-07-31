@@ -1,8 +1,8 @@
 import processing.serial.*;
 Serial portUSB;
 
-street left_street = new street();
-street right_street = new street();
+street left_street;
+street right_street;
 int time;
 float A, absL, absR;
 
@@ -12,10 +12,12 @@ int[] valorSerie = new int[2];
 int seriesContados = 0;
 
 void setup() {
-  size(400, 500);
+  fullScreen();
   portUSB = new Serial(this, "/dev/ttyUSB0", 9600);
 	
+	left_street = new street();
   left_street.set_boundaries(width/8);
+	right_street = new street();
 	right_street.set_boundaries(3*width/4);
 	
   time = second();
