@@ -12,8 +12,8 @@ class street {
 
   void set_boundaries(float offset) {
     for (int i = 0; i < street_height; i+=5) {
-      left_boundary[i] = new bound_point(i, i, 10, 6, offset);
-      right_boundary[i] = new bound_point(i, i, 10, 6, offset);
+      left_boundary[i] = new bound_point(map(i, 0, street_height, 0, TWO_PI), i, 7, 0, offset);
+      right_boundary[i] = new bound_point(map(i, 0, street_height, 0, TWO_PI), i, 7, 0, offset);
     }
   }
 
