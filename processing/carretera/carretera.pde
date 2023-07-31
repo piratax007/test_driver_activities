@@ -62,21 +62,21 @@ void draw() {
   }
 }*/
 
-void serialEvent(Serial portUSB){
+void serialEvent(Serial portUSB) {
   int inByte = portUSB.read();
-  if (firstContact == false){
-    if (inByte == 'A'){
+  if (firstContact == false) {
+    if (inByte == 'A') {
       portUSB.clear();
       firstContact = true;
       portUSB.write('A');
     }
   }
-  else{
+  else {
     valorSerie[seriesContados] = inByte;
     seriesContados ++;
-    if (seriesContados > 1){
-      absL = map(valorSerie[0], 0, 255, 0, 200);
-      absR = map(valorSerie[1], 0, 255, 200, 400);
+    if (seriesContados > 1) {
+      absL = map(valorSerie[0], 0, 255, 0, width/2);
+      absR = map(valorSerie[1], 0, 255, width/2, width);
       portUSB.write('A');
       seriesContados = 0;           
     }
